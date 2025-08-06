@@ -7,10 +7,23 @@ import httpx
 from fastapi import FastAPI, HTTPException
 from dotenv import load_dotenv
 from pydantic import BaseModel
+from starlette.middleware.cors import CORSMiddleware
 
 load_dotenv()
 
 app = FastAPI()
+
+origins = [
+    "*"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 try:
     locale.setlocale(locale.LC_ALL, 'fr_FR.UTF-8')
@@ -27,6 +40,7 @@ else:
 GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
 BASE_URL = os.getenv("BASE_URL", "https://generativelanguage.googleapis.com")
 print(f"✅ Modèle Gemini configuré : {GEMINI_MODEL}")
+
 
 @app.get("/")
 async def root():
