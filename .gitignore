@@ -1,0 +1,12 @@
+# Fichier .gitignore
+
+# Ignore le fichier des variables d'environnement
+.env
+
+# Ignore les dossiers de cache de Python
+__pycache__/
+*.pyc
+
+# Ignore les dossiers d'environnement virtuel
+venv/
+.venv/
