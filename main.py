@@ -28,7 +28,6 @@ GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
 BASE_URL = os.getenv("BASE_URL", "https://generativelanguage.googleapis.com")
 print(f"✅ Modèle Gemini configuré : {GEMINI_MODEL}")
 
-
 @app.get("/")
 async def root():
     return {"message": "Hello World"}
